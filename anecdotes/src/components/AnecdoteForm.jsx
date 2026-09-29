@@ -1,22 +1,28 @@
-import { useAnecdoteActions } from "../store"
+import { useAnecdoteActions, useNotificationActions } from "../store"
 
 const AnecdoteForm = () => {
 
-    const actions = useAnecdoteActions()
+    const { add } = useAnecdoteActions()
+    const { setNotification} = useNotificationActions()
 
-    const add = (event) => {
+    const addAnecdote = async (event) => {
         event.preventDefault()
-        const content = new FormData(event.currentTarget).get("new")?.toString() ?? ""
-        actions.add(content)
-        event.currentTarget.reset()
+        const form = event.currentTarget
+        const content = new FormData(form).get("anecdote")?.toString() ?? ""
+        await add(content)
+        setNotification(`you created '${content}'`)
+        setTimeout(() => {
+            setNotification("")
+        }, 5000)
+        form.reset()
     }
 
     return (
         <div>
             <h2>create new</h2>
-            <form onSubmit={add}>
+            <form onSubmit={addAnecdote}>
                 <div>
-                <input data-testid="new" name="new" />
+                <input data-testid="anecdote" name="anecdote" />
                 </div>
                 <button type="submit">create</button>
             </form>
