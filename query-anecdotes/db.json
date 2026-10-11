@@ -8,7 +8,7 @@
     {
       "content": "Adding manpower to a late software project makes it later!",
       "id": "21149",
-      "votes": 3
+      "votes": 4
     },
     {
       "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
@@ -32,8 +32,28 @@
     },
     {
       "content": "One does not simply walk into Mordor",
-      "votes": 2,
+      "votes": 4,
       "id": "23b75f1e-5623-4f43-9e90-39293d2048d5"
+    },
+    {
+      "content": "Desert Power",
+      "votes": 3,
+      "id": "56c25472-f835-4141-b9c2-de9d149325b9"
+    },
+    {
+      "content": "To try is to fail",
+      "votes": 8,
+      "id": "625a8f1f-4bfb-4667-b9a2-bee252d5a874"
+    },
+    {
+      "content": "Fiver",
+      "votes": 0,
+      "id": "fbd975d6-6861-46e7-84cf-e85e260baba8"
+    },
+    {
+      "content": "Indeed",
+      "votes": 1,
+      "id": "b8c55905-6e2e-4205-b10c-2a89e3503230"
     }
   ]
 }

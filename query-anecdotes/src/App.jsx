@@ -1,15 +1,36 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import { useAnecdotes } from "./hooks/useAnecdotes";
+import useNotify from "./hooks/useNotify"
 
 const App = () => {
   const { anecdotes, isPending, isError, addAnecdote: addAnecdoteToServer, addVote } = useAnecdotes()
+  const { reset, vote, create, short } = useNotify()
   
   const addAnecdote = async (event) => {
     event.preventDefault()
     const content = event.target.anecdote.value
     event.target.reset()
-    addAnecdoteToServer(content)
+    if (content.length < 5) {
+      short()
+      setTimeout(() => {
+            reset()
+        }, 5000)
+    } else {
+      addAnecdoteToServer(content)
+      create(content)
+      setTimeout(() => {
+              reset()
+          }, 5000)
+    }
+  }
+
+  const giveVote = (anecdote) => {
+    addVote(anecdote)
+    vote(anecdote.content)
+    setTimeout(() => {
+            reset()
+        }, 5000)
   }
 
   if (isPending) {
@@ -32,7 +53,7 @@ const App = () => {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => addVote(anecdote)}>vote</button>
+            <button onClick={() => giveVote(anecdote)}>vote</button>
           </div>
         </div>
       ))}
